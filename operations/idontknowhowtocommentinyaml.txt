@@ -1,0 +1,29 @@
+  VPCB:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 142.108.0.0/16
+      Tags:
+        - Key: name
+          Value: "VPC-B"
+
+  PrivateSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 142.108.0.0/24
+      VpcId:
+        Ref: VPCB
+      AvailabilityZone: "us-east-1b"
+      Tags:
+        - Key: name
+          Value: "private-subnet-B"
+
+  PublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 142.108.1.0/24
+      VpcId:
+        Ref: VPCB
+      AvailabilityZone: "us-east-1b"
+      Tags:
+        - Key: name
+          Value: "public-subnet-B"
